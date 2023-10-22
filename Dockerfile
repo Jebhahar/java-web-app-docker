@@ -1,3 +1,10 @@
-FROM tomcat:9.0.82-jdk8-corretto-al2
-# Dummy text to test 
+FROM ubuntu 
+RUN apt update 
+RUN apt install –y apache2 
+RUN apt install –y apache2-utils 
+RUN apt clean 
 COPY target/java-web-app*.war /usr/local/tomcat/webapps/java-web-app.war
+EXPOSE 80
+CMD [“apache2ctl”, “-D”, “FOREGROUND”]
+# Dummy text to test 
+

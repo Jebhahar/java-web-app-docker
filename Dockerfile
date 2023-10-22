@@ -1,10 +1,5 @@
-FROM ubuntu 
-RUN apt update 
-RUN apt install apache2 -y
-RUN apt install apache2-utils -y 
-RUN apt clean 
+FROM tomcat:8.0.20-jre8
 COPY target/java-web-app*.war /usr/local/tomcat/webapps/java-web-app.war
-EXPOSE 80
-CMD [“apache2ctl”, “-D”, “FOREGROUND”]
-# Dummy text to test 
+EXPOSE 8080
+CMD [“catalina.sh”, “run”]
 
